@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"proman/cmd"
+	"agentsyncker/cmd"
 )
 
 func main() {

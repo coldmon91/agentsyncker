@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"io"
 
-	"proman/internal/backup"
-	"proman/internal/config"
+	"agentsyncker/internal/backup"
+	"agentsyncker/internal/config"
 
 	"github.com/charmbracelet/huh"
 )

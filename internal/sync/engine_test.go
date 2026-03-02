@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"proman/internal/backup"
-	"proman/internal/config"
+	"agentsyncker/internal/backup"
+	"agentsyncker/internal/config"
 )
 
 func TestEngineSyncClaudeToGemini(t *testing.T) {

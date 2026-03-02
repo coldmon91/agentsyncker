@@ -7,10 +7,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"proman/internal/backup"
-	"proman/internal/config"
-	"proman/internal/detector"
-	"proman/internal/sync"
+	"agentsyncker/internal/backup"
+	"agentsyncker/internal/config"
+	"agentsyncker/internal/detector"
+	"agentsyncker/internal/sync"
 
 	"github.com/spf13/cobra"
 )
@@ -30,7 +30,7 @@ func newSyncCmd(stdout io.Writer, stderr io.Writer) *cobra.Command {
 
 	cmd.Flags().StringVar(&sourceName, "source", "", "source tool (claude|codex|gemini|opencode)")
 	cmd.Flags().StringVar(&targetNames, "target", "", "target tools separated by commas")
-	cmd.Flags().StringVar(&backupRoot, "backup-root", "", "backup root directory (default ~/.proman/backups)")
+	cmd.Flags().StringVar(&backupRoot, "backup-root", "", "backup root directory (default ~/.agentsyncker/backups)")
 
 	return cmd
 }

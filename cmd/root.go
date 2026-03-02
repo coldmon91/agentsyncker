@@ -5,8 +5,8 @@ import (
 	"io"
 	"os"
 
-	"proman/internal/config"
-	"proman/internal/detector"
+	"agentsyncker/internal/config"
+	"agentsyncker/internal/detector"
 
 	"github.com/spf13/cobra"
 )
@@ -25,7 +25,7 @@ func Execute(args []string, stdout io.Writer, stderr io.Writer) int {
 
 func newRootCmd(stdout io.Writer, stderr io.Writer) *cobra.Command {
 	rootCmd := &cobra.Command{
-		Use:           "proman",
+		Use:           "agentsyncker",
 		Short:         "Prompt sync manager for AI coding tools",
 		Version:       Version,
 		SilenceUsage:  true,

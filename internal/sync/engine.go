@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"proman/internal/backup"
-	"proman/internal/config"
+	"agentsyncker/internal/backup"
+	"agentsyncker/internal/config"
 )
 
 type Result struct {

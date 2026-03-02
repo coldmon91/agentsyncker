@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"proman/internal/config"
+	"agentsyncker/internal/config"
 )
 
 func syncSkills(source config.Tool, target config.Tool) (int, error) {

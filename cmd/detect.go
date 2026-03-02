@@ -5,8 +5,8 @@ import (
 	"io"
 	"os"
 
-	"proman/internal/config"
-	"proman/internal/detector"
+	"agentsyncker/internal/config"
+	"agentsyncker/internal/detector"
 
 	"github.com/spf13/cobra"
 )

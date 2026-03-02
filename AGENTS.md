@@ -81,10 +81,10 @@ Focus on the failing tests and suggest fixes.
 4. 하위 디렉터리 구조도 유지 (예: `commands/git/commit.md` → `commands/git/commit.toml`). Gemini에서는 `/` 구분이 `:`으로 변환되어 `/git:commit` 명령이 됨.
 
 ## 백업 정책
-- 백업 위치: `~/.proman/backups/`
+- 백업 위치: `~/.agentsyncker/backups/`
 - 파일명 규칙: `{프로그램명}_{원본파일명}_{YYYYMMDD_HHmmss}.bak` (예: `gemini_GEMINI.md_20260302_143000.bak`)
 - 디렉터리 백업: 대상 디렉터리 전체를 tar.gz로 압축하여 저장 (예: `gemini_commands_20260302_143000.tar.gz`)
 - 보관: 최근 5회분 백업 유지, 초과 시 가장 오래된 백업 자동 삭제.
 - 복구 단위: 파일 백업(`.bak`)과 디렉터리 백업(`.tar.gz`) 모두 지원.
-- 복구 명령 예시: `proman restore --tool gemini --backup gemini_GEMINI.md_20260302_143000.bak`
+- 복구 명령 예시: `agentsyncker restore --tool gemini --backup gemini_GEMINI.md_20260302_143000.bak`
 - 복구 시 안전장치: 원복 전에 현재 상태를 사전 백업(pre-restore backup)으로 저장.

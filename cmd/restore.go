@@ -6,9 +6,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"proman/internal/backup"
-	"proman/internal/config"
-	"proman/internal/detector"
+	"agentsyncker/internal/backup"
+	"agentsyncker/internal/config"
+	"agentsyncker/internal/detector"
 
 	"github.com/spf13/cobra"
 )
@@ -28,7 +28,7 @@ func newRestoreCmd(stdout io.Writer, stderr io.Writer) *cobra.Command {
 
 	cmd.Flags().StringVar(&toolName, "tool", "", "tool name")
 	cmd.Flags().StringVar(&backupName, "backup", "", "backup filename")
-	cmd.Flags().StringVar(&backupRoot, "backup-root", "", "backup root directory (default ~/.proman/backups)")
+	cmd.Flags().StringVar(&backupRoot, "backup-root", "", "backup root directory (default ~/.agentsyncker/backups)")
 
 	return cmd
 }

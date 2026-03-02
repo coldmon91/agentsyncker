@@ -1,6 +1,6 @@
 # Documentation Overview
 
-Proman is a CLI that synchronizes prompt assets across AI coding tools with backup and restore safety.
+Agentsyncker is a CLI that synchronizes prompt assets across AI coding tools with backup and restore safety.
 
 ## Document List (Path And Role)
 

@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"proman/internal/config"
-	"proman/internal/syncblock"
+	"agentsyncker/internal/config"
+	"agentsyncker/internal/syncblock"
 )
 
 func syncMainFile(source config.Tool, target config.Tool) error {

@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"proman/internal/config"
+	"agentsyncker/internal/config"
 )
 
 func TestDetect(t *testing.T) {

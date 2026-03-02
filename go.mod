@@ -1,4 +1,4 @@
-module proman
+module agentsyncker
 
 go 1.24.1
 

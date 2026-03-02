@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"proman/internal/config"
+	"agentsyncker/internal/config"
 )
 
 type Entry struct {
@@ -40,7 +40,7 @@ const hashMetadataExtension = ".sha256"
 const snapshotAsset = "snapshot"
 
 func DefaultRoot(home string) string {
-	return filepath.Join(home, ".proman", "backups")
+	return filepath.Join(home, ".agentsyncker", "backups")
 }
 
 func NewManager(rootDir string) (*Manager, error) {
@@ -765,7 +765,7 @@ func restoreFile(backupPath string, targetPath string) error {
 		return fmt.Errorf("create target dir: %w", err)
 	}
 
-	tmpPath := targetPath + ".proman-restore-tmp"
+	tmpPath := targetPath + ".agentsyncker-restore-tmp"
 	if err := os.WriteFile(tmpPath, content, 0o644); err != nil {
 		return fmt.Errorf("write restore temp file: %w", err)
 	}
@@ -784,7 +784,7 @@ func restoreDirectory(backupPath string, targetDir string, expectedRoot string, 
 		return fmt.Errorf("create parent dir: %w", err)
 	}
 
-	tmpDir, err := os.MkdirTemp(parentDir, "proman-restore-*")
+	tmpDir, err := os.MkdirTemp(parentDir, "agentsyncker-restore-*")
 	if err != nil {
 		return fmt.Errorf("create temp restore dir: %w", err)
 	}
@@ -801,7 +801,7 @@ func restoreDirectory(backupPath string, targetDir string, expectedRoot string, 
 
 	oldPath := ""
 	if info, err := os.Stat(targetDir); err == nil && info.IsDir() {
-		oldPath = fmt.Sprintf("%s.proman-old-%s", targetDir, nowFn().Format("20060102150405"))
+		oldPath = fmt.Sprintf("%s.agentsyncker-old-%s", targetDir, nowFn().Format("20060102150405"))
 		if err := os.Rename(targetDir, oldPath); err != nil {
 			return fmt.Errorf("move current dir aside: %w", err)
 		}
@@ -826,7 +826,7 @@ func restoreToolSnapshot(backupPath string, tool config.Tool, nowFn func() time.
 		return fmt.Errorf("create temp snapshot parent dir: %w", err)
 	}
 
-	tmpDir, err := os.MkdirTemp(parentDir, "proman-restore-snapshot-*")
+	tmpDir, err := os.MkdirTemp(parentDir, "agentsyncker-restore-snapshot-*")
 	if err != nil {
 		return fmt.Errorf("create temp snapshot restore dir: %w", err)
 	}
@@ -878,7 +878,7 @@ func restoreDirectoryFromPreparedSource(preparedDir string, targetDir string, no
 
 	oldPath := ""
 	if info, err := os.Stat(targetDir); err == nil && info.IsDir() {
-		oldPath = fmt.Sprintf("%s.proman-old-%s", targetDir, nowFn().Format("20060102150405"))
+		oldPath = fmt.Sprintf("%s.agentsyncker-old-%s", targetDir, nowFn().Format("20060102150405"))
 		if err := os.Rename(targetDir, oldPath); err != nil {
 			return fmt.Errorf("move current dir aside: %w", err)
 		}

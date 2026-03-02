@@ -3,7 +3,7 @@ package detector
 import (
 	"os"
 
-	"proman/internal/config"
+	"agentsyncker/internal/config"
 )
 
 type Status struct {

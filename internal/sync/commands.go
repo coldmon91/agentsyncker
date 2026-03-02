@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"proman/internal/config"
-	"proman/internal/converter"
+	"agentsyncker/internal/config"
+	"agentsyncker/internal/converter"
 )
 
 func syncCommands(source config.Tool, target config.Tool) (int, error) {

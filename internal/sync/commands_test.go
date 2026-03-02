@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"proman/internal/config"
+	"agentsyncker/internal/config"
 )
 
 func TestSyncCommandsMarkdownToTOML(t *testing.T) {

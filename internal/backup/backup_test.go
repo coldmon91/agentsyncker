@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"proman/internal/config"
+	"agentsyncker/internal/config"
 )
 
 func TestBackupFileAndRestore(t *testing.T) {
