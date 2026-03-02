@@ -1,0 +1,31 @@
+# Binaries
+/bin/
+proman
+proman.exe
+main
+*.exe
+*.exe~
+*.so
+*.dylib
+*.dll
+*.a
+*.out
+
+# Go build/test artifacts
+debug/
+coverage.out
+*.cover
+
+# Dependency directories
+vendor/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs and temp files
+*.log
