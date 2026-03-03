@@ -76,68 +76,11 @@ go build -o agentsyncker .
 
 ## 사용법
 
-설치 감지:
-
-```bash
-./agentsyncker detect
-```
-
-동기화(플래그 모드):
-
-```bash
-./agentsyncker sync --source claude --target gemini,opencode
-```
-
-동기화(인터랙티브 모드):
-
-```bash
-./agentsyncker sync
-```
-
-기본 런처(인터랙티브 모드 선택: `sync` / `restore` / `view`):
-
 ```bash
 ./agentsyncker
 ```
 
-백업 조회(view 모드 직접 실행):
 
 ```bash
-./agentsyncker view --tool gemini
-```
-
-백업 생성:
-
-```bash
-./agentsyncker backup --tool gemini
-```
-
-백업 이력 조회:
-
-```bash
-./agentsyncker backup --tool gemini --list
-```
-
-백업 삭제(인터랙티브 선택):
-
-```bash
-./agentsyncker backup --tool gemini --delete
-```
-
-복구(백업명 직접 지정):
-
-```bash
-./agentsyncker restore --tool gemini --backup gemini_snapshot_20260302_143000.tar.gz
-```
-
-복구(인터랙티브 백업 선택):
-
-```bash
-./agentsyncker restore --tool gemini
-```
-
-## 테스트
-
-```bash
-GOCACHE=/tmp/agentsyncker-go-build go test ./... -timeout=120s
+go run .
 ```
