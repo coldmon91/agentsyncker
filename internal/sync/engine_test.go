@@ -67,11 +67,8 @@ func TestEngineSyncClaudeToGemini(t *testing.T) {
 	if err != nil {
 		t.Fatalf("read target main failed: %v", err)
 	}
-	if !strings.Contains(string(mainContent), "PROMAN-SYNC-START") {
-		t.Fatalf("expected sync block in main file: %s", string(mainContent))
-	}
-	if !strings.Contains(string(mainContent), "source-main") {
-		t.Fatalf("expected source main content in target main file: %s", string(mainContent))
+	if string(mainContent) != "source-main" {
+		t.Fatalf("expected source main content to replace target main file: %s", string(mainContent))
 	}
 
 	cmdContent, err := os.ReadFile(filepath.Join(target.CommandDirPath(), "test.toml"))

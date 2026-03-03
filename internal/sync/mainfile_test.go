@@ -3,13 +3,12 @@ package sync
 import (
 	"os"
 	"path/filepath"
-	"strings"
 	"testing"
 
 	"agentsyncker/internal/config"
 )
 
-func TestSyncMainFileInsertBlock(t *testing.T) {
+func TestSyncMainFileReplacesTarget(t *testing.T) {
 	tmp := t.TempDir()
 	source := config.Tool{Name: "claude", HomeDir: filepath.Join(tmp, "src"), MainFile: "CLAUDE.md"}
 	target := config.Tool{Name: "gemini", HomeDir: filepath.Join(tmp, "dst"), MainFile: "GEMINI.md"}
@@ -36,14 +35,7 @@ func TestSyncMainFileInsertBlock(t *testing.T) {
 	if err != nil {
 		t.Fatalf("read target main failed: %v", err)
 	}
-	text := string(content)
-	if !strings.Contains(text, "target-main") {
-		t.Fatalf("expected original content to remain, got: %s", text)
-	}
-	if !strings.Contains(text, "PROMAN-SYNC-START") {
-		t.Fatalf("expected sync block, got: %s", text)
-	}
-	if !strings.Contains(text, "source-main") {
-		t.Fatalf("expected source content in sync block, got: %s", text)
+	if string(content) != "source-main" {
+		t.Fatalf("expected target main file to be replaced, got: %s", string(content))
 	}
 }
