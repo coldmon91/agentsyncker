@@ -16,6 +16,8 @@ var descriptionPattern = regexp.MustCompile(`(?m)^description\s*=\s*("(?:\\.|[^"
 
 var promptMultilinePattern = regexp.MustCompile(`(?s)prompt\s*=\s*"""\n?(.*?)"""`)
 
+var promptMultilineLiteralPattern = regexp.MustCompile(`(?s)prompt\s*=\s*'''\n?(.*?)'''`)
+
 var promptSingleLinePattern = regexp.MustCompile(`(?m)^prompt\s*=\s*("(?:\\.|[^"])*")\s*$`)
 
 func ParseMarkdown(input []byte) (Command, error) {
@@ -76,6 +78,12 @@ func ParseTOML(input []byte) (Command, error) {
 		return cmd, nil
 	}
 
+	promptMultilineLiteralMatch := promptMultilineLiteralPattern.FindStringSubmatch(text)
+	if len(promptMultilineLiteralMatch) == 2 {
+		cmd.Prompt = strings.TrimRight(promptMultilineLiteralMatch[1], "\n")
+		return cmd, nil
+	}
+
 	promptSingleLineMatch := promptSingleLinePattern.FindStringSubmatch(text)
 	if len(promptSingleLineMatch) == 2 {
 		prompt, err := strconv.Unquote(promptSingleLineMatch[1])
@@ -92,8 +100,13 @@ func ParseTOML(input []byte) (Command, error) {
 func EncodeTOML(command Command) []byte {
 	description := strconv.Quote(command.Description)
 	prompt := strings.TrimRight(command.Prompt, "\n")
-	prompt = strings.ReplaceAll(prompt, `"""`, `\\"\\"\\"`)
-	output := fmt.Sprintf("description = %s\nprompt = \"\"\"\n%s\n\"\"\"\n", description, prompt)
+
+	if !strings.Contains(prompt, `'''`) {
+		output := fmt.Sprintf("description = %s\nprompt = '''\n%s\n'''\n", description, prompt)
+		return []byte(output)
+	}
+
+	output := fmt.Sprintf("description = %s\nprompt = %s\n", description, strconv.Quote(prompt))
 	return []byte(output)
 }
 
